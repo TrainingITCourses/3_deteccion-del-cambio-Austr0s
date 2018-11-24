@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <h1>Ejercicio 3 - Patrón Redux con NgRX</h1>
+  </div>
+
+  <div>
+    <form [formGroup]="optionsForm">
+      <select formControlName="optionsControl">
+        <label >Elige una opción</label>
+        <option [value]="opc" *ngFor="let opc of options" (click)="selectDropDownItem(opc)">{{opc}}</option>
+      </select>
+      <div>
+        <span>Se filtrara sobre <strong>{{optionsForm.get('optionsControl').value}}</strong> </span>
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <div>
+      <app-search-filter (search)="onSearch($event)"></app-search-filter>
+    </div>
+  </div>
+
+  <div >
+    <app-counter [counter]="counter"></app-counter>
+    <app-agencies-list [datas]="filterSelected" *ngIf="filterSelected && counter.length != 0">
+    </app-agencies-list>
+  </div>
+</div>
